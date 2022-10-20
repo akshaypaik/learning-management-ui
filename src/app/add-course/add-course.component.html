@@ -1,0 +1,54 @@
+<div class="container">
+    <h3 class="headerText">Add Course</h3>
+    <hr>
+    <form [formGroup]="courseForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Course Name: </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+            placeholder="Course Name" formControlName="courseName">
+        </div>
+        <div *ngIf="courseForm.get('courseName').touched && courseForm.get('courseName').invalid && courseForm.get('courseName').errors" class="errorMessage">
+            Please enter Course Name!!
+        </div>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Course Duration:</label>
+        <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+        placeholder="Course Duration" formControlName="courseDuration">
+        </div>
+        <div *ngIf="courseForm.get('courseDuration').touched && courseForm.get('courseDuration').invalid && courseForm.get('courseDuration').errors" class="errorMessage">
+            Please enter Course Duration!!
+        </div>
+        <div class="form-group">
+        <label for="exampleInputPassword1">Course Description :</label>
+        <textarea type="text" class="form-control" id="lastName" 
+        placeholder="Course Description" formControlName="courseDescription"></textarea>
+        </div>
+        <div *ngIf="courseForm.get('courseDescription').touched && courseForm.get('courseDescription').invalid && courseForm.get('courseDescription').errors" class="errorMessage">
+            Please enter Course Description!!
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Technology :</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+            placeholder="Technology" formControlName="technology">
+        </div>
+        <div *ngIf="courseForm.get('technology').touched && courseForm.get('technology').invalid && courseForm.get('technology').errors" class="errorMessage">
+            Please enter Technology!!
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Launch URL :</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+            placeholder="Launch URL" formControlName="launchURL">
+        </div>
+        <div *ngIf="courseForm.get('launchURL').touched && courseForm.get('launchURL').invalid && courseForm.get('launchURL').errors" class="errorMessage">
+            Please enter Launch URL!!
+        </div>
+        <div style="padding-top: 15px;">
+            <button type="submit" class="btn btn-success" [disabled]="!courseForm.valid" (click)="onClaimsSubmit()">Add Course</button>
+        </div>
+        <div *ngIf="message != ''" class="twoTopMargin" [ngClass]="message == 'Exception occurred! Please try later!' ? 'errorMessage' : 'successMessage'">
+            {{message}}
+        </div>
+    </form>
+</div>
+
+

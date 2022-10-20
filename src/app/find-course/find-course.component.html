@@ -1,0 +1,45 @@
+<div class="container">
+    <h3 class="headerText">Find a Course</h3>
+    <hr>
+    <span class="p-input-icon-left" style="margin-bottom: 15px;">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="searchText" placeholder="Search">    
+    </span>
+    <div class="row">
+            <div class="col-sm-10 filterArea">
+                 <div>
+                        <span><strong>Select Technology </strong> </span> 
+                        <span>
+                            <p-dropdown [options]="technologies" [showClear]="true" placeholder="Select a Technology" [(ngModel)]="selectedTechnology" optionLabel="name" 
+                            (click)="onSelectTechnology()"></p-dropdown>
+                        </span>
+                </div> 
+                <div style="margin-top: 5px; margin-bottom: 5px;">
+                    <span><strong>Select Course Duration </strong> </span> 
+                    <span> <i class="pi pi-info-circle" pTooltip="Duration is specified in minutes!"></i>
+                        From <p-dropdown [options]="fromCourseDuration" [showClear]="true" placeholder="Select from duration" [(ngModel)]="selectedFromCourseDuration" optionLabel="name" 
+                        (click)="onSelectCouresDuration('from')"></p-dropdown>
+                        To <p-dropdown [options]="toCourseDuration" [showClear]="true" placeholder="Select to duration" [(ngModel)]="selectedToCourseDuration" optionLabel="name" 
+                        (click)="onSelectCouresDuration('to')"></p-dropdown>
+                    </span>
+                </div> 
+            </div>
+            <div class="col-sm-2">
+                <button class="btn btn-danger" (click)="onClearFilter()">Clear Filters</button>
+                <i class="pi pi-info-circle" style="margin-left: 5%;" pTooltip="Click on Clear Filters button to clear all previously applied filters!"></i>
+            </div>
+    </div>
+    <div *ngFor="let course of coursesDetailsOnTechnology | searchCourse : searchText">
+        <p-card>
+            <ng-template pTemplate="header">
+                <b>{{ course.courseName }} </b> - {{ course.technology }}
+            </ng-template>
+            {{  course.courseDescription }}
+            <br><br>
+            <i> Duration - {{ course.courseDuration }} Minutes</i>
+            <ng-template pTemplate="footer">
+                {{ course.launchURL }}
+            </ng-template>
+        </p-card>
+    </div>
+</div>

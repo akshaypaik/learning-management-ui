@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar">
+        <span class="navbar-toggler-icon">&#9776;</span>
+    </button> -->
+
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a class="navbar-brand">Learning Management</a>
+        </div>
+
+            <ul class="nav navbar-nav" style="display: contents;">
+                <li class="nav-item"><a (click)="onTabSelect('add-course')" *ngIf="loggedIn">Add Course</a></li>
+                <li class="nav-item"><a (click)="onTabSelect('courses')" *ngIf="loggedIn">Courses</a></li>
+                <li class="nav-item"><a (click)="onTabSelect('deleteCourse')" *ngIf="loggedIn">Delete Course</a></li>
+                <li class="nav-item"><a (click)="onTabSelect('findCourse')" *ngIf="loggedIn">Find a Course</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li *ngIf="loggedIn" class="logOutButton"><a (click)="onLogOut()">Logout</a></li>
+            </ul>
+
+    </div>
+</nav>
+<div *ngIf="message != ''" class="errorMessage">
+    {{message}}
+</div>
+
+

@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="headerText">Courses</h3>
+    <hr>
+    <span class="p-input-icon-left" style="margin-bottom: 15px;">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="searchText" placeholder="Search">         
+    </span>
+    <div *ngFor="let course of coursesDetails | searchCourse : searchText">
+        <p-card>
+            <ng-template pTemplate="header">
+                <b>{{ course.courseName }} </b> - {{ course.technology }}
+            </ng-template>
+            {{  course.courseDescription }}
+            <br><br>
+            <i> Duration - {{ course.courseDuration }} Minutes</i>
+            <ng-template pTemplate="footer">
+                {{ course.launchURL }}
+            </ng-template>
+        </p-card>
+    </div>
+</div>

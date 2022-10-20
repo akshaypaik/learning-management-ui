@@ -1,0 +1,12 @@
+p-card ::ng-deep .p-component{
+    background-color: lightgrey;
+    padding-left: 15px;
+}
+
+p-card ::ng-deep .p-card{
+    margin-bottom: 8px !important;
+}
+
+p-card ::ng-deep .p-card-header{
+    padding-top: 15px;
+}
